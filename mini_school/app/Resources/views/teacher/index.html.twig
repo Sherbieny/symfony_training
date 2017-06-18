@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Here we can list the teachers</h1>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Teacher</th>
+            <th>Age</th>
+            <th>Staff</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for teacher in teachers %}
+            <tr>
+                <td>
+                    <a href="{{ path('teacher_show', {'teacherName': teacher.name}) }}">
+                        {{ teacher.name }}
+                    </a>
+                </td>
+                <td>{{ teacher.age }}</td>
+                <td>
+                    {% if teacher.isEmployee %}
+                        YES
+                    {% endif %}
+                    {% if not teacher.isEmployee %}
+                        NO
+                    {% endif %}
+
+                </td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

@@ -1,0 +1,5 @@
+AppBundle\Entity\Teacher:
+  teacher_{1..20}:
+    name: <name()>
+    age: <numberBetween(20, 80)>
+    isEmployee: <boolean(80)>

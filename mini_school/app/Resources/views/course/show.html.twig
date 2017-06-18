@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Course {{ course.name }}{% endblock %}
+
+{% block body %}
+    <h2 class="genus-name">{{ course.name }}</h2>
+
+
+    <div class="sea-creature-container">
+        <div class="genus-photo"></div>
+        <div class="genus-details">
+            <dl class="genus-details-list">
+                <dt>Category:</dt>
+                <dd>{{ course.category }}</dd>
+                <dt>Number of lessons:</dt>
+                <dd>{{ course.numOfLessons|number_format }}</dd>
+                <dt>Mandatory:</dt>
+                <dd>
+                    {% if course.isMandatory  %}YES{% endif %}
+                    {% if not course.isMandatory  %}NO{% endif %}
+                <dd>
+            </dl>
+        </div>
+    </div>
+
+    <div id="js-notes-wrapper"></div>
+
+{% endblock %}

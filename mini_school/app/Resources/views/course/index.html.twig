@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>Here we can list the courses</h1>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Course</th>
+            <th>Category</th>
+            <th># of Lessons</th>
+            <th>Mandatory</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for course in courses %}
+            <tr>
+                <td>
+                    <a href="{{ path('course_show', {'courseName': course.name}) }}">
+                        {{ course.name }}
+                    </a>
+                </td>
+                <td>{{ course.category }}</td>
+                <td>{{ course.numOfLessons }}</td>
+                <td>
+                    {% if course.isMandatory == 1 %}
+                        True
+                    {% endif %}
+                    {% if not course.isMandatory == 1 %}
+                        False
+                    {% endif %}
+
+                </td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

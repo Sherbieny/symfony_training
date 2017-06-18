@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Miss {{ teacher.name }}{% endblock %}
+
+{% block body %}
+    <h2 class="genus-name">{{ teacher.name }}</h2>
+
+
+    <div class="sea-creature-container">
+        <div class="teacher-photo"></div>
+        <div class="genus-details">
+            <dl class="genus-details-list">
+                <dt>Age:</dt>
+                <dd>{{ teacher.age|number_format }}</dd>
+                <dt>Part of the Staff:</dt>
+                <dd>
+                    {% if teacher.isEmployee  %}YES{% endif %}
+                    {% if not teacher.isEmployee  %}NO{% endif %}
+                <dd>
+            </dl>
+        </div>
+    </div>
+
+    <div id="js-notes-wrapper"></div>
+
+{% endblock %}
