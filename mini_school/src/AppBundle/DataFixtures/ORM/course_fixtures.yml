@@ -1,6 +1,0 @@
-AppBundle\Entity\Course:
-  course_{1..20}:
-    name: <course()>
-    category: <category()>
-    numOfLessons: <numberBetween(1, 30)>
-    isMandatory: <boolean(70)>

@@ -13,12 +13,12 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Nelmio\Alice\Fixtures;
 
-class LoadCourseFixtures implements FixtureInterface
+class LoadFixtures implements FixtureInterface
 {
     public function load(ObjectManager $manager)
     {
         Fixtures::load(
-            __DIR__.'/course_fixtures.yml',
+            __DIR__ . '/fixtures.yml',
             $manager, [ 'providers' => [$this] ]
         );
     }
@@ -26,18 +26,15 @@ class LoadCourseFixtures implements FixtureInterface
 
     public function course(){
         $coursat = [
-            'Math 1',
-            'Math 2',
-            'Math 3',
-            'Science 1',
-            'Science 2',
-            'Geography',
-            'History 1',
-            'History 2',
-            'Language 1',
-            'Language 2',
-            'Agriculture',
-            'P.E.'
+            'Math-'.rand(1, 5).rand(0,1).rand(1, 5),
+            'Science-'.rand(1, 5).rand(0,1).rand(1, 5),
+            'Geography-'.rand(1, 5).rand(0,1).rand(1, 5),
+            'History-'.rand(1, 5).rand(0,1).rand(1, 5),
+            'History-'.rand(1, 5).rand(0,1).rand(1, 5),
+            'Language-'.rand(1, 5).rand(0,1).rand(1, 5),
+            'Language-'.rand(1, 5).rand(0,1).rand(1, 5),
+            'Agriculture-'.rand(1, 5).rand(0,1).rand(1, 5),
+            'P.E-'.rand(1,10)
         ];
 
         $key = array_rand($coursat);

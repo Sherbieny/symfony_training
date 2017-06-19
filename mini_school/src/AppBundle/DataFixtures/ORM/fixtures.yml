@@ -1,0 +1,13 @@
+AppBundle\Entity\Course:
+  course_{1..200}:
+    name: <course()>
+    category: <category()>
+    numOfLessons: <numberBetween(1, 30)>
+    isMandatory: <boolean(70)>
+    teacher: '@teacher_*'
+
+AppBundle\Entity\Teacher:
+  teacher_{1..30}:
+    name: <name()>
+    age: <numberBetween(20, 80)>
+    isEmployee: <boolean(80)>

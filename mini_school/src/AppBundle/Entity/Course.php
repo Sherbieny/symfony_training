@@ -46,7 +46,13 @@ class Course
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isMandatory;
+    private $isMandatory = true;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Teacher", inversedBy="courses")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $teacher;
 
     /**
      * @return mixed
@@ -63,6 +69,15 @@ class Course
     {
         $this->name = $name;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
 
     /**
      * @return mixed
@@ -111,5 +126,22 @@ class Course
     {
         $this->isMandatory = $isMandatory;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getTeacher()
+    {
+        return $this->teacher;
+    }
+
+    /**
+     * @param mixed $teacher
+     */
+    public function setTeacher(Teacher $teacher)
+    {
+        $this->teacher = $teacher;
+    }
+
 
 }

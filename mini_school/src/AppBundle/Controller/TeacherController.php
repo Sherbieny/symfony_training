@@ -9,9 +9,11 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Course;
 use AppBundle\Entity\Teacher;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class TeacherController extends Controller
@@ -25,8 +27,16 @@ class TeacherController extends Controller
         $teacher->setAge(rand(20, 80));
         $teacher->setIsEmployee(true);
 
+        $course = new Course();
+        $course->setName('Course'.rand(0, 20));
+        $course->setCategory('Science');
+        $course->setNumOfLessons(rand(1, 100));
+
+        $course->setTeacher($teacher);
+
         $em = $this->getDoctrine()->getManager();
         $em->persist($teacher);
+        $em->persist($course);
         $em->flush();
 
         return new Response('<html><body><h1>
@@ -45,10 +55,16 @@ class TeacherController extends Controller
             throw $this->createNotFoundException("El miss de mesh 3andena ya 3naya");
         }
 
+        $courses = $em->getRepository('AppBundle:Course')
+            ->findAllCoursesForTeacher($teacher);
+
         return $this->render('teacher/show.html.twig', [
             'teacher' => $teacher,
+            'courses' => $courses,
+            'courses_count' => count($courses)
         ]);
     }
+
 
     /**
      * @Route("/teacher", name="teacher_index")

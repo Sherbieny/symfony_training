@@ -17,6 +17,14 @@
                     {% if teacher.isEmployee  %}YES{% endif %}
                     {% if not teacher.isEmployee  %}NO{% endif %}
                 <dd>
+                <dt>Teaching: {{ courses_count }} Course(s)</dt>
+                {% for course in courses %}
+                    <dd>
+                        <a href="{{ path('course_show', {'courseName': course.name}) }}">
+                            {{ course.name }}
+                        </a>
+                    </dd>
+                {% endfor %}
             </dl>
         </div>
     </div>
