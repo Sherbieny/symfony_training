@@ -1,0 +1,11 @@
+{{ form_start(courseForm) }}
+    {{ form_row(courseForm.name) }}
+    {{ form_row(courseForm.category) }}
+    {{ form_row(courseForm.numOfLessons) }}
+    {{ form_row(courseForm.isMandatory) }}
+    {{ form_row(courseForm.description) }}
+    {{ form_row(courseForm.teacher) }}
+
+<button type="submit" class="btn btn-primary" formnovalidate>Save</button>
+
+{{ form_end(courseForm) }}

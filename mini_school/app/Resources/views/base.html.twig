@@ -14,6 +14,12 @@
 
     </head>
     <body>
+
+        {% for msg in app.session.flashBag.get('success') %}
+            <div class="alert alert-success">
+                {{ msg }}
+            </div>
+        {% endfor %}
         {% block body %}
             <div class="footer">
                 <p class="footer-text">Made with <span class="fa-code"><3</span> <a href="https://csharkstudios.com">CSHARK Studios</a></p>

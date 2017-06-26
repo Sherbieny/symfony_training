@@ -9,6 +9,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -26,18 +27,23 @@ class Course
 
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="string")
      */
     private $name;
 
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="string")
      */
     private $category;
 
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Range(min=1, max=40,
+     *     maxMessage="Please enter a number between 1 and 40")
      * @ORM\Column(type="integer")
      */
     private $numOfLessons;
@@ -48,7 +54,15 @@ class Course
      */
     private $isMandatory = true;
 
+
     /**
+     * @ORM\Column(type="text")
+     * @ORM\Column(nullable=true)
+     */
+    private $description;
+
+    /**
+     * @Assert\NotBlank()
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Teacher", inversedBy="courses")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -126,6 +140,24 @@ class Course
     {
         $this->isMandatory = $isMandatory;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+
 
     /**
      * @return mixed

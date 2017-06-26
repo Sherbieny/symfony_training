@@ -10,6 +10,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -27,12 +28,26 @@ class Teacher
 
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="string")
      */
     private $name;
 
 
     /**
+     * @Assert\NotBlank()
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Department")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $department;
+
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Range(
+     *     min=18,
+     *     max=70,
+     * )
      * @ORM\Column(type="integer")
      */
     private $age;
@@ -45,12 +60,21 @@ class Teacher
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course", mappedBy="teacher")
+     * @ORM\Column(type="string")
      */
     private $courses;
 
     public function __construct()
     {
         $this->courses = new ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
@@ -68,6 +92,24 @@ class Teacher
     {
         $this->name = $name;
     }
+
+    /**
+     * @return Department
+     */
+    public function getDepartment()
+    {
+        return $this->department;
+    }
+
+    /**
+     * @param mixed $department
+     */
+    public function setDepartment(Department $department)
+    {
+        $this->department = $department;
+    }
+
+
 
     /**
      * @return mixed
@@ -109,6 +151,10 @@ class Teacher
         return $this->courses;
     }
 
+    public function __toString()
+    {
+        return $this->getName();
+    }
 
 
 }

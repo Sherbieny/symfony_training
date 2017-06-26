@@ -55,4 +55,23 @@ class LoadFixtures implements FixtureInterface
 
         return $cat[$key];
     }
+
+    public function department(){
+        $dep = [
+            'Administration',
+            'Religion',
+            'Mathematics',
+            'Languages',
+            'History',
+            'Biology',
+            'Art',
+            'Chemistry',
+            'Physics',
+            'Agriculture',
+        ];
+
+        $key = array_rand($dep);
+
+        return $dep[$key];
+    }
 }

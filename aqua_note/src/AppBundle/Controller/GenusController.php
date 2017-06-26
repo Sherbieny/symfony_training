@@ -11,6 +11,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Genus;
 use AppBundle\Entity\GenusNote;
+use AppBundle\Service\MarkdownTransformer;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -71,6 +72,10 @@ class GenusController extends Controller
         if(!$genus){
             throw $this->createNotFoundException('3ayez meen ya shater !');
         }
+
+        $transformer = $this->get('app.markdown_transformer');
+        $funFact = $transformer->parse($genus->getFunFact());
+
         /*
         $cache = $this->get('doctrine_cache.providers.my_markdown_cache');
         $key = md5($funFact);
@@ -92,6 +97,7 @@ class GenusController extends Controller
 
          return $this->render('genus/show.html.twig', [
             'genus' => $genus,
+             'funFact' => $funFact,
              'recentNoteCount' => count($recentNotes)
         ]);
     }

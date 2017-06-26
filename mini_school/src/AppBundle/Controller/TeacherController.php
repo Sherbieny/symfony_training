@@ -58,6 +58,7 @@ class TeacherController extends Controller
         $courses = $em->getRepository('AppBundle:Course')
             ->findAllCoursesForTeacher($teacher);
 
+
         return $this->render('teacher/show.html.twig', [
             'teacher' => $teacher,
             'courses' => $courses,

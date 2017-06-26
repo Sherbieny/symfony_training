@@ -4,10 +4,16 @@ AppBundle\Entity\Course:
     category: <category()>
     numOfLessons: <numberBetween(1, 30)>
     isMandatory: <boolean(70)>
+    description: <realText(200,2)>
     teacher: '@teacher_*'
 
 AppBundle\Entity\Teacher:
   teacher_{1..30}:
     name: <name()>
+    department: '@department_*'
     age: <numberBetween(20, 80)>
     isEmployee: <boolean(80)>
+
+AppBundle\Entity\Department:
+  department_{1..10}:
+    name: <department()>

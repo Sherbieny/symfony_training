@@ -10,6 +10,7 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\Course;
+use AppBundle\Service\MarkDownTransformer;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -45,8 +46,14 @@ class CourseController extends Controller
             throw $this->createNotFoundException('mesh 3andena el course da ya3nya');
         }
 
+        $descParser = new MarkDownTransformer();
+        $description = $descParser->parse($course->getDescription());
+
+
+
         return $this->render('course/show.html.twig', [
            'course' => $course,
+            'description' => $description
         ]);
     }
 
