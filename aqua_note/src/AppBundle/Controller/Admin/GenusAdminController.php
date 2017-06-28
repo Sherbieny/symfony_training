@@ -5,19 +5,24 @@ namespace AppBundle\Controller\Admin;
 use AppBundle\Entity\Genus;
 use AppBundle\Form\GenusFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("/admin")
+ * @Security("is_granted('ROLE_MANAGE_GENUS')")
  */
 class GenusAdminController extends Controller
 {
     /**
+     *
      * @Route("/genus", name="admin_genus_list")
      */
     public function indexAction()
     {
+ //used annotation on class instead       $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $genuses = $this->getDoctrine()
             ->getRepository('AppBundle:Genus')
             ->findAll();
@@ -42,7 +47,10 @@ class GenusAdminController extends Controller
             $em->persist($genus);
             $em->flush();
 
-            $this->addFlash('success', 'ka2en gedeed fel ba7r');
+            $this->addFlash(
+                'success',
+                sprintf('ka2en gedeed fel ba7r, (%s) gamed neek!',
+                    $this->getUser()->getEmail()));
 
             return $this->redirectToRoute('admin_genus_list');
         }

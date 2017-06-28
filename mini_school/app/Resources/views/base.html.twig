@@ -14,7 +14,22 @@
 
     </head>
     <body>
+    <header class="header">
+        <ul class="navi">
+            <li><a class="left-navi" href="{{ path('teacher_index') }}">Staff</a></li>
+            <li><a class="left-navi" href="{{ path('course_index') }}">Courses</a></li>
+            <li><a class="left-navi" href="{{ path('admin_index') }}">Administration</a></li>
+        </ul>
 
+            {% if is_granted('ROLE_USER') %}
+                <li><a class="logi btn btn-danger" href="{{ path('security_logout') }}">Logout</a></li>
+            {% else %}
+                <li><a class="logi btn btn-success" href="{{ path('security_login') }}">Login</a></li>
+            {% endif %}
+
+
+
+    </header>
         {% for msg in app.session.flashBag.get('success') %}
             <div class="alert alert-success">
                 {{ msg }}

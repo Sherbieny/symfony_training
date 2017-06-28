@@ -13,7 +13,13 @@ Flexbox Layout
 
 .navi {
     flex: 1;
-    justify-content: flex-end;
+    justify-content: flex-start;
+}
+
+.logi {
+    margin-top: 5%;
+    margin-right: 20px;
+    font-size:14pt;
 }
 
 .main-content {
@@ -77,7 +83,7 @@ body {
 .header {
     padding: 10px 0;
     margin: 0 auto;
-    background-color: #81B9BA;
+    background-color: #000000;
 }
 
 .logo-icon {
@@ -91,36 +97,28 @@ body {
 }
 
 .navi {
-    padding-top: 25px;
+    padding-top: 20px;
 }
 
 .navi li a {
     text-decoration: none;
-    color: #3a3a3a;
-    font-size: 12px;
+    color: #FFFFFF;
+    font-size: 18px;
     text-transform: uppercase;
     margin-right: 10px;
+    /*border: #ffffff;*/
+    /*border: solid;*/
+    /*border-spacing: 5px;*/
 }
 
 .navi li a:hover {
-    color: #000;
+    color: #c0a16b;
 }
 
 .navi > li > a:focus, .nav > li > a:hover {
     background-color: transparent;
 }
 
-.navi li:last-child a {
-    background: #eee;
-    border-radius: 2px;
-    transition: 200ms ease-in-out;
-    padding: 8px 16px 7px;
-}
-
-.navi li:last-child a:hover {
-    background: rgba(200, 200, 200, .5);
-    color: #000;
-}
 
 .genus-name {
     margin-top: 30px;
@@ -200,6 +198,10 @@ BODY Styling
     content: '';
     display: table;
     clear: both;
+}
+
+.empty-space{
+    margin-top: 30%;
 }
 
 /* --------------------------------

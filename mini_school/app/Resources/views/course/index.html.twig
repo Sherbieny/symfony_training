@@ -10,6 +10,7 @@
             <th>Course</th>
             <th>Category</th>
             <th># of Lessons</th>
+            <th>Teacher</th>
             <th>Mandatory</th>
         </tr>
         </thead>
@@ -23,12 +24,15 @@
                 </td>
                 <td>{{ course.category }}</td>
                 <td>{{ course.numOfLessons }}</td>
+                <td><a href="{{ path('teacher_show', {'teacherName': course.teacher.name }) }}">
+                        {{ course.teacher.name }}
+                    </a>
+                </td>
                 <td>
-                    {% if course.isMandatory == 1 %}
-                        True
-                    {% endif %}
-                    {% if not course.isMandatory == 1 %}
-                        False
+                    {% if course.isMandatory  %}
+                        YES
+                    {% else %}
+                        NO
                     {% endif %}
 
                 </td>

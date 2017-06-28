@@ -12,11 +12,13 @@ namespace AppBundle\Controller\Admin;
 use AppBundle\Entity\Teacher;
 use AppBundle\Form\TeacherFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("/admin")
+ * @Security("is_granted('ROLE_SUPER_ADMIN')")
  */
 class TeacherAdminController extends Controller
 {

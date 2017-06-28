@@ -12,8 +12,8 @@
             <dl class="genus-details-list">
                 <dt>Department:</dt>
                 <dd>{{ teacher.department.name }}</dd>
-                <dt>Age:</dt>
-                <dd>{{ teacher.age|number_format }}</dd>
+                <dt>Birthday:</dt>
+                <dd>{{ teacher.age|date('d/M') }}</dd>
                 <dt>Part of the Staff:</dt>
                 <dd>
                     {% if teacher.isEmployee  %}YES{% endif %}

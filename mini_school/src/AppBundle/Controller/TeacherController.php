@@ -21,7 +21,7 @@ class TeacherController extends Controller
     /**
      * @Route("/teacher/new")
      */
-    public function newAction(){
+   /* public function newAction(){
         $teacher = new Teacher();
         $teacher->setName('3afaf'.rand(1, 150));
         $teacher->setAge(rand(20, 80));
@@ -41,7 +41,7 @@ class TeacherController extends Controller
 
         return new Response('<html><body><h1>
                                     A new teacher joined!</h1></body></html>');
-    }
+    }*/
 
     /**
      * @Route("/teacher/{teacherName}", name="teacher_show")

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row text-center">
+            <div class="empty-space">&nbsp;</div>
+            <div class="col-xs-6">
+                <a class="btn btn-primary"
+                        href="{{ path('admin_course_list') }}">
+                    Go To Courses
+                </a>
+            </div>
+            <div class="col-xs-6">
+                <a class="btn btn-primary"
+                        href="{{ path('admin_teacher_list') }}">
+                    Go To Teachers
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

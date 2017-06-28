@@ -15,12 +15,14 @@
                     <tr>
                         <th>Name</th>
                         <th>Department</th>
+                        <th>Birthday</th>
                         <th>&nbsp;</th>
                     </tr>
                     {% for teacher in teachers %}
                         <tr>
                             <td>{{ teacher.name }}</td>
                             <td>{{ teacher.department.name }}</td>
+                            <td>{{ teacher.age|date('d/M') }}</td>
                             <td>
                                 <a href="{{ path('admin_teacher_edit', {'id': teacher.id}) }}" class="btn btn-xs btn-success"><span class="fa fa-pencil"></span></a>
                             </td>

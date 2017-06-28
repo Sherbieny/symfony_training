@@ -20,19 +20,19 @@ class CourseController extends Controller
     /**
      * @Route("/course/new")
      */
-    public function newAction(){
-        $course = new Course();
-        $course->setName('Course'.rand(0, 20));
-        $course->setCategory('Science');
-        $course->setNumOfLessons(rand(1, 100));
-        $course->setIsMandatory(true);
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($course);
-        $em->flush();
-
-        return new Response('<html><body>A new Course</body>');
-    }
+//    public function newAction(){
+//        $course = new Course();
+//        $course->setName('Course'.rand(0, 20));
+//        $course->setCategory('Science');
+//        $course->setNumOfLessons(rand(1, 100));
+//        $course->setIsMandatory(true);
+//
+//        $em = $this->getDoctrine()->getManager();
+//        $em->persist($course);
+//        $em->flush();
+//
+//        return new Response('<html><body>A new Course</body>');
+//    }
 
     /**
      * @Route("/course/{courseName}", name="course_show")
@@ -61,13 +61,13 @@ class CourseController extends Controller
 
 
     /**
-     * @Route("/course")
+     * @Route("/course", name="course_index")
      */
     public function indexAction(){
         $em = $this->getDoctrine()->getManager();
 
         $courses = $em->getRepository('AppBundle:Course')
-            ->findAllMandatoryOrderedByName();
+            ->findAll();
 
         return $this->render('course/index.html.twig',[
             'courses' => $courses,

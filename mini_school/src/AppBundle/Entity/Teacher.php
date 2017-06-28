@@ -44,11 +44,7 @@ class Teacher
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Range(
-     *     min=18,
-     *     max=70,
-     * )
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="date")
      */
     private $age;
 
@@ -109,8 +105,6 @@ class Teacher
         $this->department = $department;
     }
 
-
-
     /**
      * @return mixed
      */
@@ -122,10 +116,14 @@ class Teacher
     /**
      * @param mixed $age
      */
-    public function setAge($age)
+    public function setAge(\DateTime $age)
     {
         $this->age = $age;
     }
+
+
+
+
 
     /**
      * @return mixed

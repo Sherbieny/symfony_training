@@ -8,7 +8,7 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20170619144447 extends AbstractMigration
+class Version20170627164956 extends AbstractMigration
 {
     /**
      * @param Schema $schema
@@ -18,9 +18,7 @@ class Version20170619144447 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE course ADD teacher_id INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE course ADD CONSTRAINT FK_169E6FB941807E1D FOREIGN KEY (teacher_id) REFERENCES teacher (id)');
-        $this->addSql('CREATE INDEX IDX_169E6FB941807E1D ON course (teacher_id)');
+        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, email VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_8D93D649E7927C74 (email), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
     }
 
     /**
@@ -31,8 +29,6 @@ class Version20170619144447 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE course DROP FOREIGN KEY FK_169E6FB941807E1D');
-        $this->addSql('DROP INDEX IDX_169E6FB941807E1D ON course');
-        $this->addSql('ALTER TABLE course DROP teacher_id');
+        $this->addSql('DROP TABLE user');
     }
 }

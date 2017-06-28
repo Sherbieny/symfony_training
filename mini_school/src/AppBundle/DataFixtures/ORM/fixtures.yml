@@ -11,7 +11,7 @@ AppBundle\Entity\Teacher:
   teacher_{1..30}:
     name: <name()>
     department: '@department_*'
-    age: <numberBetween(20, 80)>
+    age: <dateTimeBetween('1930-01-01', '1996-01-01')>
     isEmployee: <boolean(80)>
 
 AppBundle\Entity\Department:
